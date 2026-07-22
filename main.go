@@ -46,9 +46,15 @@ func run() error {
 	startIndex := flag.Int("start-index", 0, "Starting index for interface numbering")
 	filePrefix := flag.Int("file-prefix", 70, "Numeric filename prefix for .link files (e.g. 70 -> 70-net0.link)")
 	verbose := flag.Bool("verbose", false, "Display verbose output")
+	showVersion := flag.Bool("version", false, "Print version information and exit")
 
 	flag.Usage = displayHelp
 	flag.Parse()
+
+	if *showVersion {
+		printVersion()
+		os.Exit(0)
+	}
 
 	if *help {
 		displayHelp()
